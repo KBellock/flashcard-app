@@ -1,38 +1,113 @@
-.App {
-  text-align: center;
+body {
+    background-color: gray;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card-grid {
+    display: grid;
+    align-items:center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .25rem;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+    background-color: white;
+    position: relative;
+    height: 200px;
+    margin: .5rem;
+    transform-style: preserve-3d;
+    transition: 200ms;
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+    cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card:hover {
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .8);
+    --translate-y: -2px;
 }
 
-.App-link {
-  color: #61dafb;
+.card.flip {
+    --rotate-y: 180deg;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-front,
+.card-back {
+    position: absolute;
+    padding: 1rem;
+    backface-visibility:hidden;
+}
+
+.card-front {
+    left: 0;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.flashcard-options {
+    margin-top: .5rem;
+}
+
+.flashcard-option {
+    margin-top: .25rem;
+    color: #333;
+    font-size: .75rem;
+}
+
+
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: rgb(49, 55, 61);
+    color: white;
+    padding: .75rem;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+    border-bottom: 1px solid white;
+}
+
+.container {
+    margin-top: .75rem;
+}
+
+.form-group {
+    padding: .3rem;
+    display: flex;
+    flex-direction: column;
+    margin: .4rem;
+}
+
+.form-group > label {
+    color: #EEE;
+    font-size: .9rem;
+    margin-bottom: .25rem;
+}
+
+.form-group > select,
+.form-group > input {
+    padding: .3rem;
+}
+
+.btn {
+    background-color: hsl(200, 100%, 50%);
+    border: none;
+    border-radius: .2em;
+    padding: 10px;
+    box-shadow:0 0 5px 2px rgba(238, 238, 238, 0.3);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: hsl(200, 100%, 40%);
+    color: white;
 }
